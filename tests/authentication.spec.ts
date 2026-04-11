@@ -5,23 +5,18 @@
 4) API Key Authentication
 */
 
-
-
+// 1) No Auth(public API)
 
 import{test,expect, request} from'@playwright/test'
-
-// 1) No Auth
-
 test("public API No Auth", async({request})=>
 {
     const response=await request.get("https://jsonplaceholder.typicode.com/posts/1");
     
     expect(response.ok()).toBeTruthy();
-
+    
     const responsebody=await response.json()
     console.log(responsebody);
 })
-
 
 
 
@@ -54,7 +49,7 @@ test("Basic Authentication",async({request})=>
 
 
 // 3) Token Authentication
-//1
+
 test("Token Authentication1",async({request})=>
 {
      const bearerToken="ghp_VDjmWcQUBwTCIukSJSOXvghDgeA1jGd2vhxFo"
@@ -66,9 +61,8 @@ test("Token Authentication1",async({request})=>
     });
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);
-    console.log(await response.json())
+    console.log(await response.json());
 })
-
 
 
 //2 returns user information
@@ -84,7 +78,7 @@ test("Token Authentication2",async({request})=>
     });
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);
-    console.log(await response.json())
+    console.log(await response.json());
 })
 
 
