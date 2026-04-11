@@ -1,0 +1,68 @@
+/* 
+Test - create booking
+Request type - post
+Request body - static
+*/
+
+
+import{test,expect}from'@playwright/test'
+
+test('create request using static body',async({request})=>
+{
+
+    // request body
+    const requestbody=
+    {
+        firstname:"Jim", lastname:"Brown", totalprice:1000, depositpaid:true,
+        bookingdates:{
+            checkin:"2025-07-01",
+            checkout:"2025-07-05",
+        },
+        additionalneeds:"super bowls"
+    }
+
+    // send post request and capture in response
+
+    // for posting request we need to mention the url and requestbody
+
+
+    const baseurl='https://restful-booker.herokuapp.com/booking'
+
+    const response=await request.post(baseurl,{data:requestbody});
+
+    const responsebody=await response.json();   // returns the body from response
+    console.log(responsebody);
+
+
+    // validation of status code
+
+    expect(response.ok()).toBeTruthy();
+    expect(response.status()).toBe(200);
+
+
+    // validate response body
+    expect(responsebody).toHaveProperty("bookingid");
+    expect(responsebody).toHaveProperty("booking");
+    expect(responsebody).toHaveProperty("booking.additionalneeds");
+
+
+    // validate booking details
+
+    const booking=responsebody.booking
+
+
+    expect(responsebody.booking).toMatchObject({
+        firstname:"Jim", lastname:"Brown", totalprice:1000, depositpaid:true,
+        additionalneeds:"super bowls",
+        });
+
+    // validate booking dates
+    
+
+    expect(booking.bookingdates).toMatchObject({checkin:"2025-07-01",
+            checkout:"2025-07-05",});
+
+
+
+
+})
