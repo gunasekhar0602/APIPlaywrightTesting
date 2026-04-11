@@ -83,8 +83,21 @@ test("Token Authentication2",async({request})=>
 
 
 
-
-
-
 // 4) API key authentication
+
+test.only("API key Auth1",async({request})=>
+{
+    const response=await request.get("https://api.openweathermap.org/data/2.5/weather",
+        {
+            params:
+            {
+                q:"Hyderabad",
+                appid:"fe9c5cddb7e01d747b4611c3fc9eaf2c"
+            }
+        }
+    );
+    expect(response.ok).toBeTruthy()
+    expect(response.status()).toBe(200)
+    console.log(await response.json())
+})
 
