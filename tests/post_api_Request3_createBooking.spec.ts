@@ -79,7 +79,4 @@ test('create request using static body',async({request})=>
         checkout:requestbody.bookingdates.checkout,
     })
 
-
-
-
 })

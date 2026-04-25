@@ -2,6 +2,7 @@
 Test - create booking    Request type - post     Request body - static
 */
 
+// Creating a request - POST 
 import{test,expect}from'@playwright/test'
 // request is inbuilt playwright fixture
 test('create request using static body',async({request})=>
@@ -31,7 +32,7 @@ test('create request using static body',async({request})=>
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);
 
-    // validate response body
+    // validate response body.   Use (toHaveProperty) while validating the response body
     expect(responsebody).toHaveProperty("bookingid");
     expect(responsebody).toHaveProperty("booking");
     expect(responsebody).toHaveProperty("booking.additionalneeds");

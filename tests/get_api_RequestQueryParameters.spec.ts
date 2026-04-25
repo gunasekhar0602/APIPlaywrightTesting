@@ -1,17 +1,18 @@
 import{test,expect,Locator}from'@playwright/test'
+
 test('getrequest by query parameter',async({request})=>
 {
-    const firstname="Jim";   // we can use this as path parameter
-    const lastname="Brown"
+    const firstname="Jim";   // we can use this as query parameter
+    const lastname="Brown";
 
     // sending get request and capturing the response by using query parameter
-    const response=await request.get("https://restful-booker.herokuapp.com/booking",{params:{firstname,lastname}})
+    // Instead of providing values directly we use a key called params
+    const response=await request.get("https://restful-booker.herokuapp.com/booking",
+                                                {params:{firstname,lastname}})
 
     // parse the response and print
-
     const responsebody=await response.json();
     console.log(responsebody);
-
 
     // add assertions
     expect(response.ok()).toBeTruthy;
@@ -25,5 +26,6 @@ test('getrequest by query parameter',async({request})=>
     {
         expect(item).toHaveProperty("bookingid");
         expect(typeof item.bookingid).toBe("number");
+        //expect(item.bookingId).toBeGreaterThan(0);
     }
 })
