@@ -1,15 +1,15 @@
 /* 
-Test - create booking     Request type - post      Request body - static
+Test - create booking     Request type - post      Request body - JSON
 */
 // Here are getting the request body details from the json file.
 
 import{test,expect}from'@playwright/test'
 import fs from 'fs';     // for getting file
 
-test('create request using static body',async({request})=>
+test('create request using JSON file',async({request})=>
 {
-    // read data from jsonn(request body)
-    const jsonfile="testdata/testdata/post_request.json"
+    // read data from json(request body)
+    const jsonfile="testdata/post_request.json"
     const requestbody=JSON.parse(fs.readFileSync(jsonfile,'utf-8'))
 
     // send post request and capture in response
@@ -32,7 +32,7 @@ test('create request using static body',async({request})=>
 
     // validate booking details
     const booking=responsebody.booking
-
+// here no need to hardcore the values instead say resquestbody.property
     expect(responsebody.booking).toMatchObject({
         firstname:requestbody.firstname, lastname:requestbody.lastname,
         totalprice:requestbody.totalprice, depositpaid:requestbody.depositpaid,
