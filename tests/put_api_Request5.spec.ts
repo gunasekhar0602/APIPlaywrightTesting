@@ -33,5 +33,4 @@ test('update Booking(PUT)',async({request})=>
     const tokenrequestbody=readJson("testdata/token_requestbody.json")
 
 
-
 })
