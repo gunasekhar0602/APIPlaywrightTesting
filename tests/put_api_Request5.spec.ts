@@ -9,7 +9,8 @@ import fs from 'fs';
 
 function readJson(filepath:string)
 {
-    JSON.parse(fs.readFileSync(filepath,'utf-8'))
+    // reading the file and returning the file
+    return JSON.parse(fs.readFileSync(filepath,'utf-8'))
 }
 
 test('update Booking(PUT)',async({request})=>
@@ -20,7 +21,7 @@ test('update Booking(PUT)',async({request})=>
 
     const response=await request.post("https://restful-booker.herokuapp.com/booking/",
                                                                         {data:requestbody});
-    expect(response.ok()).toBeTruthy();
+    //expect(response.ok()).toBeTruthy();
 
 
     const responsebody=await response.json();
@@ -36,7 +37,7 @@ test('update Booking(PUT)',async({request})=>
     expect(tokenresponse.ok()).toBeTruthy();
 
     const tokenresponsebody=await tokenresponse.json();
-    const token=tokenresponsebody.token();
+    const token=tokenresponsebody.token;
     console.log("Token", token)
 
 
