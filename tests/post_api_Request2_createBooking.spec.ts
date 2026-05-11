@@ -12,7 +12,8 @@ test('create request using JSON file',async({request})=>
     const jsonFile="testdata/requestbody.json"
 
     // JSON is predefined class      // parse is method
-    // This will return data from the requestbody
+    // This will return data from the requestbody file
+    // We need to get the request body
     const requestbody:any=JSON.parse(fs.readFileSync(jsonFile,'utf-8'));
 
     // send post request and capture in response
