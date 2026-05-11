@@ -9,10 +9,11 @@ import fs from 'fs';  // for getting file
 test('create request using JSON file',async({request})=>
 {
     // read data from json(request body)
+    // create a varaiable for jsonfile and provide file path as value
     const jsonFile="testdata/requestbody.json"
 
     // JSON is predefined class      // parse is method
-    // This will return data from the requestbody file
+    // This will return data from the requestbody json file
     // We need to get the request body
     const requestbody:any=JSON.parse(fs.readFileSync(jsonFile,'utf-8'));
 
