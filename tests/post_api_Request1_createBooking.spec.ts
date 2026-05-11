@@ -10,11 +10,15 @@ test('create request using static body',async({request})=>
     // request body will be in JSON formate
     const requestbody=
     {
-        firstname:"Jim", lastname:"Brown", totalprice:1000, depositpaid:true,
-        bookingdates:{
-            checkin:"2025-07-01", checkout:"2025-07-05",
+        "firstname":"Jim",
+        "lastname":"Brown", 
+        "totalprice":1000,
+        "depositpaid":true,
+        "bookingdates":{
+            "checkin":"2025-07-01", 
+            "checkout":"2025-07-05",
         },
-        additionalneeds:"super bowls"
+        "additionalneeds":"super bowls"
     }
 
     // send post request and capture in response
