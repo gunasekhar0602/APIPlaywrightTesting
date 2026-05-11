@@ -2,6 +2,8 @@ import{test,expect,Locator} from"@playwright/test"
 
 test.only('getrequest by path parameter',async({request})=>
 {
+    
+    // we can provide any appropriate number as bookingId
     const bookingId=1;   // we can use this as path parameter
 
     // sending get request and capturing the response by using path parameter
