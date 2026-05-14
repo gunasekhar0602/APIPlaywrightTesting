@@ -2,7 +2,8 @@ import{test,expect,Locator}from'@playwright/test'
 
 test('getrequest by query parameter',async({request})=>
 {
-    const firstname="Jim";   // we can use this as query parameter
+    // we can use these two parameters as query parameters
+    const firstname="Jim";   
     const lastname="Brown";
 
     // sending get request and capturing the response by using query parameter
@@ -22,6 +23,7 @@ test('getrequest by query parameter',async({request})=>
     // response should not be empty
     expect(responsebody.length).toBeGreaterThan(0);
 
+    // Verifying the properties
     for(const item of responsebody)
     {
         expect(item).toHaveProperty("bookingid");

@@ -5,15 +5,21 @@
 4) API Key Authentication
 */
 
-// 1) No Auth(public API)
 
-import{test,expect, request} from'@playwright/test'
+// 1) No Auth(public API)
+// No Authentication is required for public API
+
+import{test,expect,request} from'@playwright/test'
 test("public API No Auth", async({request})=>
 {
+    // https://jsonplaceholder.typicode.com/posts/1 - path parameter
+    // Getting response
     const response=await request.get("https://jsonplaceholder.typicode.com/posts/1");
     
+    // Assertion of response
     expect(response.ok()).toBeTruthy();
     
+    // capturing response and printing response
     const responsebody=await response.json()
     console.log(responsebody);
 })
@@ -25,15 +31,20 @@ test("public API No Auth", async({request})=>
 
 // 2) Basic Auth (Need to pass the username and password)
 
-test("Basic Authentication",async({request})=>
+test.only("Basic Authentication",async({request})=>
 {
     // we need to pass the user name and password inside the header
+    // Every header is having key and value pair
+    // Autherization is key
+    // Buffer is class and from is method in buffer
+    // toString is method.
+    // base64 is parameter
     const response=await request.get("https://httpbin.org/basic-auth/user/pass",{
         headers:{
-                Authorization:"Basic "+Buffer.from("user:pass").tostring('base64')
+                Authorization:"Basic "+ Buffer.from("user:pass").toString('base64')
                 }
     });
-    expect(response.ok()).toBeTruthy();
+    expect(response.ok).toBeTruthy();
     expect(response.status()).toBe(200);
 })
 
@@ -85,7 +96,7 @@ test("Token Authentication2",async({request})=>
 
 // 4) API key authentication
 
-test.only("API key Auth1",async({request})=>
+test("API key Auth1",async({request})=>
 {
     const response=await request.get("https://api.openweathermap.org/data/2.5/weather",
         {

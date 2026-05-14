@@ -46,7 +46,7 @@ test('update Booking(PUT)',async({request})=>
 
     // For update request along with the request we need to add token through headers
     const updaterequestbody =readJson("testdata/putrequestbody.json");
-    const updateresponse=await request.put(`https://restful-booker.heroapp.com/booking/ ${bookingid}`,
+    const updateresponse=await request.patch(`https://restful-booker.heroapp.com/booking/ ${bookingid}`,
                     {
                             headers:{"cookie":`token=${token}`},
                             data:updaterequestbody

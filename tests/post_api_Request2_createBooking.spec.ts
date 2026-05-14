@@ -39,7 +39,7 @@ test('create request using JSON file',async({request})=>
     const booking=responsebody.booking
 
 // here no need to hardcore the values instead say resquestbody.property
-    expect(responsebody.booking).toMatchObject({
+    expect(booking).toMatchObject({
         firstname:requestbody.firstname, lastname:requestbody.lastname,
         totalprice:requestbody.totalprice, depositpaid:requestbody.depositpaid,
         additionalneeds:requestbody.additionalneeds,
@@ -47,7 +47,7 @@ test('create request using JSON file',async({request})=>
 
     // validate booking dates
     expect(booking.bookingdates).toMatchObject({
-        checkin:requestbody.booking.checkin,
-        checkout:requestbody.bboking.checkout,
+        checkin:requestbody.bookingdates.checkin,
+        checkout:requestbody.bookingdates.checkout,
     })
 })
